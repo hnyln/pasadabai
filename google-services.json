@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "482178252048",
+    "project_id": "pasadabai",
+    "storage_bucket": "pasadabai.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482178252048:android:010f64d3979f7c2bef3995",
+        "android_client_info": {
+          "package_name": "com.phpastil.pasadabai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALXHCAcYZ-UZIksqWzhSR6jS_W5eCsovc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

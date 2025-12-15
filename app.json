@@ -1,15 +1,20 @@
 {
   "expo": {
-    "scheme": "acme",
+    "android": {
+      "googleServicesFile": "./google-services.json",
+      "package": "com.phpastil.pasadabai"
+    },
+    "scheme": "pasadabai",
     "userInterfaceStyle": "automatic",
     "orientation": "default",
     "web": {
       "output": "static"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "@react-native-firebase/app"
     ],
-    "name": "pasadabai",
+    "name": "PasadaBai",
     "slug": "pasadabai"
   }
 }
