@@ -12,7 +12,8 @@
     },
     "plugins": [
       "expo-router",
-      "@react-native-firebase/app"
+      "@react-native-firebase/app",
+      "expo-font"
     ],
     "name": "PasadaBai",
     "slug": "pasadabai"

@@ -9,6 +9,9 @@
     /* Fonts */
     --font-rounded: "SF Pro Rounded", "Hiragino Maru Gothic ProN", Meiryo,
       "MS PGothic", sans-serif;
+    --font-sans: "Poppins-Regular";
+    --font-sans-bold: "Poppins-Bold";
+    --font-sans-medium: "Poppins-Medium";
   }
 }
 
