@@ -263,281 +263,283 @@ export default function Fare() {
   };
 
   return (
-    <GestureHandlerRootView className="flex-1 bg-white py-4">
-      <ScrollView className="bg-white gap-y-4 flex-1">
-        <View className="gap-y-4">
-          <View className="py-4 relative items-center justify-center border-b border-gray-200 bg-white">
-            <TouchableOpacity
-              onPress={() => router.back()}
-              activeOpacity={0.7}
-              className="absolute left-4 w-10 h-10 items-center justify-center"
-            >
-              <FontAwesome6 name="chevron-left" size={18} color="#737373" />
-            </TouchableOpacity>
-            <ResponsiveText variant="subheading" weight="bold">
-              Fare Guide
-            </ResponsiveText>
-          </View>
+    <GestureHandlerRootView className="flex-1">
+      <View className="flex-1 bg-white">
+        <View className="py-4 relative items-center justify-center border-b border-gray-200 bg-white">
+          <TouchableOpacity
+            onPress={() => router.back()}
+            activeOpacity={0.7}
+            className="absolute left-4 w-10 h-10 items-center justify-center"
+          >
+            <FontAwesome6 name="chevron-left" size={18} color="#737373" />
+          </TouchableOpacity>
+          <ResponsiveText variant="subheading" weight="bold">
+            Fare Guide
+          </ResponsiveText>
+        </View>
 
-          <View className="px-6">
-            <TouchableOpacity
-              onPress={() => {
-                setIsDialogVisible(true);
-                openPopover();
-              }}
-              ref={chevronRef}
-            >
-              {selectedRoute ? (
-                <View className="border border-gray-200 px-4 py-3 rounded-xl flex flex-row gap-4 items-center">
-                  <View className="rounded-full bg-blue-400 p-3 flex items-center justify-center">
-                    <FontAwesome6 name="car" size={16} color="#ffffff" />
-                  </View>
-
-                  <View className="flex-1">
-                    <View className="flex-row items-center gap-2">
-                      <ResponsiveText variant="subheading" weight="bold">
-                        {selectedRoute.code}
-                      </ResponsiveText>
-                      <ResponsiveText
-                        variant="subheading"
-                        weight="regular"
-                        color="#6b7280"
-                      >
-                        •
-                      </ResponsiveText>
-                      <ResponsiveText variant="caption" weight="regular">
-                        {selectedRoute.stops}
-                      </ResponsiveText>
-                      <ResponsiveText
-                        variant="subheading"
-                        weight="regular"
-                        color="#6b7280"
-                      >
-                        •
-                      </ResponsiveText>
-                      <ResponsiveText variant="caption" weight="regular">
-                        {selectedRoute.distance}
-                      </ResponsiveText>
+        <ScrollView className="flex-1">
+          <View className="gap-y-4 py-4">
+            <View className="px-6">
+              <TouchableOpacity
+                onPress={() => {
+                  setIsDialogVisible(true);
+                  openPopover();
+                }}
+                ref={chevronRef}
+              >
+                {selectedRoute ? (
+                  <View className="border border-gray-200 px-4 py-3 rounded-xl flex flex-row gap-4 items-center">
+                    <View className="rounded-full bg-blue-400 p-3 flex items-center justify-center">
+                      <FontAwesome6 name="car" size={16} color="#ffffff" />
                     </View>
-                    <ResponsiveText
-                      variant="caption"
-                      weight="regular"
-                      style={{ marginTop: -2 }}
-                    >
-                      {selectedRoute.name}
-                    </ResponsiveText>
-                  </View>
 
-                  <View className="items-center justify-center p-4">
-                    <FontAwesome6
-                      name={open ? "chevron-up" : "chevron-down"}
-                      size={16}
-                      color="#737373"
-                    />
-                  </View>
-                </View>
-              ) : (
-                <View className="border border-gray-200 px-4 py-3 rounded-xl flex flex-row gap-4 items-center">
-                  <View className="rounded-full bg-gray-200 p-3 flex items-center justify-center">
-                    <FontAwesome6 name="car" size={16} color="#9ca3af" />
-                  </View>
-
-                  <View className="flex-1">
-                    <ResponsiveText variant="subheading" weight="bold">
-                      Select a route
-                    </ResponsiveText>
-                    <ResponsiveText
-                      variant="caption"
-                      weight="regular"
-                      style={{ marginTop: -2 }}
-                    >
-                      Tap to choose a route
-                    </ResponsiveText>
-                  </View>
-
-                  <View className="items-center justify-center p-4">
-                    <FontAwesome6
-                      name="chevron-down"
-                      size={16}
-                      color="#737373"
-                    />
-                  </View>
-                </View>
-              )}
-            </TouchableOpacity>
-
-            <Popover
-              visible={open}
-              anchor={anchor}
-              onClose={() => setOpen(false)}
-              width={Dimensions.get("window").width - 40}
-            >
-              <View className="p-4">
-                <TextInput
-                  value={query}
-                  onChangeText={setQuery}
-                  placeholder="Search route..."
-                  placeholderTextColor="#9ca3af"
-                  className="border border-gray-200 rounded-full px-4 py-2 text-sm"
-                />
-              </View>
-
-              <View className="border-b border-gray-100" />
-
-              <ScrollView style={{ maxHeight: 270 }}>
-                {routes.map((route) => (
-                  <TouchableOpacity
-                    key={route.code}
-                    onPress={() => {
-                      setSelectedRoute(route);
-                      setOpen(false);
-                    }}
-                  >
-                    <View className="flex flex-row p-4 justify-center items-center gap-4">
-                      <View
-                        className={`w-10 h-10 rounded-full flex items-center justify-center ${route.bg}`}
-                      >
-                        <Text
-                          className={`font-sans-bold text-md ${route.color}`}
-                        >
-                          {route.code}
-                        </Text>
-                      </View>
-
-                      <View className="flex-1">
-                        <ResponsiveText variant="body" weight="medium">
-                          Route {route.code}
+                    <View className="flex-1">
+                      <View className="flex-row items-center gap-2">
+                        <ResponsiveText variant="subheading" weight="bold">
+                          {selectedRoute.code}
                         </ResponsiveText>
                         <ResponsiveText
-                          variant="caption"
+                          variant="subheading"
                           weight="regular"
-                          style={{ marginTop: -2 }}
+                          color="#6b7280"
                         >
-                          {route.name}
+                          •
+                        </ResponsiveText>
+                        <ResponsiveText variant="caption" weight="regular">
+                          {selectedRoute.stops}
+                        </ResponsiveText>
+                        <ResponsiveText
+                          variant="subheading"
+                          weight="regular"
+                          color="#6b7280"
+                        >
+                          •
+                        </ResponsiveText>
+                        <ResponsiveText variant="caption" weight="regular">
+                          {selectedRoute.distance}
                         </ResponsiveText>
                       </View>
+                      <ResponsiveText
+                        variant="caption"
+                        weight="regular"
+                        style={{ marginTop: -2 }}
+                      >
+                        {selectedRoute.name}
+                      </ResponsiveText>
                     </View>
-                    <View className="border-b border-gray-50" />
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
-            </Popover>
-          </View>
 
-          {isRushHour() && (
-            <View className="px-6">
-              <View className="bg-yellow-100 p-3 rounded-xl">
-                <ResponsiveText
-                  variant="caption"
-                  weight="medium"
-                  style={{ color: "#713f12" }}
-                >
-                  🚦 Rush Hour Alert: Traffic may be heavy. Expect delays!
-                </ResponsiveText>
-              </View>
-            </View>
-          )}
-
-          <View className="px-6">
-            <View className="border border-gray-200 p-4 rounded-xl flex flex-col gap-2 items-start">
-              <View className="flex flex-row gap-2">
-                <ResponsiveText variant="body" weight="medium">
-                  Discount Eligibility
-                </ResponsiveText>
-              </View>
-
-              {discount.map((item) => (
-                <View key={item.id} className="flex flex-row gap-3">
-                  <View>
-                    <MaterialCommunityIcons
-                      name={item.icon as any}
-                      size={18}
-                      color={item.color}
-                    />
+                    <View className="items-center justify-center p-4">
+                      <FontAwesome6
+                        name={open ? "chevron-up" : "chevron-down"}
+                        size={16}
+                        color="#737373"
+                      />
+                    </View>
                   </View>
-                  <ResponsiveText variant="caption" weight="regular">
-                    {item.title}
-                  </ResponsiveText>
-                </View>
-              ))}
-            </View>
-          </View>
+                ) : (
+                  <View className="border border-gray-200 px-4 py-3 rounded-xl flex flex-row gap-4 items-center">
+                    <View className="rounded-full bg-gray-200 p-3 flex items-center justify-center">
+                      <FontAwesome6 name="car" size={16} color="#9ca3af" />
+                    </View>
 
-          <View className="px-6">
-            <View className="border border-gray-200 rounded-xl">
-              <View className="flex items-start bg-gray-50 rounded-t-xl py-3 px-4 flex-row justify-between">
-                <ResponsiveText variant="subheading" weight="bold">
-                  Fare Rate
-                </ResponsiveText>
-                <View className="rounded-full bg-blue-100 py-1 px-3">
+                    <View className="flex-1">
+                      <ResponsiveText variant="subheading" weight="bold">
+                        Select a route
+                      </ResponsiveText>
+                      <ResponsiveText
+                        variant="caption"
+                        weight="regular"
+                        style={{ marginTop: -2 }}
+                      >
+                        Tap to choose a route
+                      </ResponsiveText>
+                    </View>
+
+                    <View className="items-center justify-center p-4">
+                      <FontAwesome6
+                        name="chevron-down"
+                        size={16}
+                        color="#737373"
+                      />
+                    </View>
+                  </View>
+                )}
+              </TouchableOpacity>
+
+              <Popover
+                visible={open}
+                anchor={anchor}
+                onClose={() => setOpen(false)}
+                width={Dimensions.get("window").width - 40}
+              >
+                <View className="p-4">
+                  <TextInput
+                    value={query}
+                    onChangeText={setQuery}
+                    placeholder="Search route..."
+                    placeholderTextColor="#9ca3af"
+                    className="border border-gray-200 rounded-full px-4 py-2 text-sm"
+                  />
+                </View>
+
+                <View className="border-b border-gray-100" />
+
+                <ScrollView style={{ maxHeight: 270 }}>
+                  {routes.map((route) => (
+                    <TouchableOpacity
+                      key={route.code}
+                      onPress={() => {
+                        setSelectedRoute(route);
+                        setOpen(false);
+                      }}
+                    >
+                      <View className="flex flex-row p-4 justify-center items-center gap-4">
+                        <View
+                          className={`w-10 h-10 rounded-full flex items-center justify-center ${route.bg}`}
+                        >
+                          <Text
+                            className={`font-sans-bold text-md ${route.color}`}
+                          >
+                            {route.code}
+                          </Text>
+                        </View>
+
+                        <View className="flex-1">
+                          <ResponsiveText variant="body" weight="medium">
+                            Route {route.code}
+                          </ResponsiveText>
+                          <ResponsiveText
+                            variant="caption"
+                            weight="regular"
+                            style={{ marginTop: -2 }}
+                          >
+                            {route.name}
+                          </ResponsiveText>
+                        </View>
+                      </View>
+                      <View className="border-b border-gray-50" />
+                    </TouchableOpacity>
+                  ))}
+                </ScrollView>
+              </Popover>
+            </View>
+
+            {isRushHour() && (
+              <View className="px-6">
+                <View className="bg-yellow-100 p-3 rounded-xl">
                   <ResponsiveText
                     variant="caption"
                     weight="medium"
-                    style={{ color: "#1e3a8a" }}
+                    style={{ color: "#713f12" }}
                   >
-                    minimum fare: ₱15
+                    🚦 Rush Hour Alert: Traffic may be heavy. Expect delays!
                   </ResponsiveText>
                 </View>
               </View>
+            )}
 
-              <View>
-                <View className="flex-row border-b border-gray-200">
-                  <View className="flex-[2] p-3">
-                    <Text className="font-medium">Destination</Text>
+            <View className="px-6">
+              <View className="border border-gray-200 p-4 rounded-xl flex flex-col gap-2 items-start">
+                <View className="flex flex-row gap-2">
+                  <ResponsiveText variant="body" weight="medium">
+                    Discount Eligibility
+                  </ResponsiveText>
+                </View>
+
+                {discount.map((item) => (
+                  <View key={item.id} className="flex flex-row gap-3">
+                    <View>
+                      <MaterialCommunityIcons
+                        name={item.icon as any}
+                        size={18}
+                        color={item.color}
+                      />
+                    </View>
+                    <ResponsiveText variant="caption" weight="regular">
+                      {item.title}
+                    </ResponsiveText>
                   </View>
+                ))}
+              </View>
+            </View>
 
-                  <View className="flex-1 bg-blue-50 p-3">
-                    <Text className="text-center font-medium">Regular</Text>
-                  </View>
-
-                  <View className="flex-1 bg-yellow-50 p-3">
-                    <Text className="text-center font-medium">Discount</Text>
+            <View className="px-6">
+              <View className="border border-gray-200 rounded-xl">
+                <View className="flex items-start bg-gray-50 rounded-t-xl py-3 px-4 flex-row justify-between">
+                  <ResponsiveText variant="subheading" weight="bold">
+                    Fare Rate
+                  </ResponsiveText>
+                  <View className="rounded-full bg-blue-100 py-1 px-3">
+                    <ResponsiveText
+                      variant="caption"
+                      weight="medium"
+                      style={{ color: "#1e3a8a" }}
+                    >
+                      minimum fare: ₱15
+                    </ResponsiveText>
                   </View>
                 </View>
 
-                {selectedRoute ? (
-                  selectedRoute.fare.map((stop, index) => {
-                    const discounted = (stop.regular * 0.8).toFixed(1);
+                <View>
+                  <View className="flex-row border-b border-gray-200">
+                    <View className="flex-[2] p-3">
+                      <Text className="font-medium">Destination</Text>
+                    </View>
 
-                    return (
-                      <View
-                        key={`${selectedRoute.code}-${index}`}
-                        className="flex-row border-b border-gray-100"
-                      >
-                        <View className="flex-[2] p-3">
-                          <Text>{stop.name}</Text>
-                        </View>
+                    <View className="flex-1 bg-blue-50 p-3">
+                      <Text className="text-center font-medium">Regular</Text>
+                    </View>
 
-                        <View className="flex-1 bg-blue-50 p-3">
-                          <Text className="text-center font-semibold">
-                            ₱{stop.regular}
-                          </Text>
-                        </View>
-
-                        <View className="flex-1 bg-yellow-50 p-3">
-                          <Text className="text-center font-semibold">
-                            ₱{discounted}
-                          </Text>
-                        </View>
-                      </View>
-                    );
-                  })
-                ) : (
-                  <View className="p-4 items-center">
-                    <ResponsiveText
-                      variant="body"
-                      weight="medium"
-                      style={{ color: "#737373" }}
-                    >
-                      Please select a route to view fare rates.
-                    </ResponsiveText>
+                    <View className="flex-1 bg-yellow-50 p-3">
+                      <Text className="text-center font-medium">Discount</Text>
+                    </View>
                   </View>
-                )}
+
+                  {selectedRoute ? (
+                    selectedRoute.fare.map((stop, index) => {
+                      const discounted = (stop.regular * 0.8).toFixed(1);
+
+                      return (
+                        <View
+                          key={`${selectedRoute.code}-${index}`}
+                          className="flex-row border-b border-gray-100"
+                        >
+                          <View className="flex-[2] p-3">
+                            <Text>{stop.name}</Text>
+                          </View>
+
+                          <View className="flex-1 bg-blue-50 p-3">
+                            <Text className="text-center font-semibold">
+                              ₱{stop.regular}
+                            </Text>
+                          </View>
+
+                          <View className="flex-1 bg-yellow-50 p-3">
+                            <Text className="text-center font-semibold">
+                              ₱{discounted}
+                            </Text>
+                          </View>
+                        </View>
+                      );
+                    })
+                  ) : (
+                    <View className="p-4 items-center">
+                      <ResponsiveText
+                        variant="body"
+                        weight="medium"
+                        style={{ color: "#737373" }}
+                      >
+                        Please select a route to view fare rates.
+                      </ResponsiveText>
+                    </View>
+                  )}
+                </View>
               </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </GestureHandlerRootView>
   );
 }
