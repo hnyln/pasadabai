@@ -16,6 +16,8 @@
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.2.8",
     "@react-native-firebase/app": "^23.7.0",
+    "@rn-primitives/popover": "^1.2.0",
+    "@rn-primitives/slot": "^1.2.0",
     "@tailwindcss/postcss": "^4.1.11",
     "expo": "^54.0.1",
     "expo-constants": "~18.0.8",
