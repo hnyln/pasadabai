@@ -354,8 +354,8 @@ export default function Fare() {
                 <TextInput
                   value={query}
                   onChangeText={setQuery}
-                  placeholder="Search route..."
-                  className="border border-gray-300 rounded-full px-4 py-2 text-sm"
+                  placeholder="Search route..asas."
+                  className="border border-gray-200 rounded-full px-4 py-2 text-sm"
                 />
               </View>
 

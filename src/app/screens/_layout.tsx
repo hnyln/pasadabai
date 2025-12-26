@@ -17,7 +17,9 @@ export default function Layout() {
 
   useEffect(() => {
     if (fontsLoaded) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync().catch((error) => {
+        console.warn("Splash screen hide error:", error);
+      });
       console.log("fonts loaded");
     }
   }, [fontsLoaded]);
