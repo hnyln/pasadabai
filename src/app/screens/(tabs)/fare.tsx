@@ -294,9 +294,31 @@ export default function Fare() {
                   </View>
 
                   <View className="flex-1">
-                    <ResponsiveText variant="subheading" weight="bold">
-                      {selectedRoute.code}
-                    </ResponsiveText>
+                    <View className="flex-row items-center gap-2">
+                      <ResponsiveText variant="subheading" weight="bold">
+                        {selectedRoute.code}
+                      </ResponsiveText>
+                      <ResponsiveText
+                        variant="subheading"
+                        weight="regular"
+                        color="#6b7280"
+                      >
+                        •
+                      </ResponsiveText>
+                      <ResponsiveText variant="caption" weight="regular">
+                        {selectedRoute.stops}
+                      </ResponsiveText>
+                      <ResponsiveText
+                        variant="subheading"
+                        weight="regular"
+                        color="#6b7280"
+                      >
+                        •
+                      </ResponsiveText>
+                      <ResponsiveText variant="caption" weight="regular">
+                        {selectedRoute.distance}
+                      </ResponsiveText>
+                    </View>
                     <ResponsiveText
                       variant="caption"
                       weight="regular"
@@ -354,7 +376,8 @@ export default function Fare() {
                 <TextInput
                   value={query}
                   onChangeText={setQuery}
-                  placeholder="Search route..asas."
+                  placeholder="Search route..."
+                  placeholderTextColor="#9ca3af"
                   className="border border-gray-200 rounded-full px-4 py-2 text-sm"
                 />
               </View>
