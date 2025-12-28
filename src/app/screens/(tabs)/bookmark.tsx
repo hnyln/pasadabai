@@ -79,7 +79,7 @@ export default function Bookmark() {
 
               <TouchableOpacity
                 className="flex-row items-center gap-4 px-4 py-6"
-                onPress={() => router.push("/screens/(pages)/bookmarks/address")}
+                onPress={() => router.push("/screens/(pages)/new-address")}
               >
                 <MaterialIcons name="work-outline" size={18} />
                 <View>

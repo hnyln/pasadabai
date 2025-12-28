@@ -8,10 +8,10 @@ import { FontAwesome6 } from "@expo/vector-icons";
 
 export default function Address() {
   return (
-    <SafeAreaView className="flex-1">
-      <StatusBar barStyle="dark-content" backgroundColor="#f9fafb" />
-      <View className="px-6">
-        <View className="py-4 relative items-center justify-center bg-white">
+    <SafeAreaView className="flex-1 bg-white">
+      <StatusBar barStyle="light-content" backgroundColor="#f9fafb" />
+      <View className="px-6 bg-white h-full">
+        <View className="py-4 relative items-center justify-center">
           <TouchableOpacity
             onPress={() => router.replace("/screens/(tabs)/bookmark")}
             activeOpacity={0.7}
